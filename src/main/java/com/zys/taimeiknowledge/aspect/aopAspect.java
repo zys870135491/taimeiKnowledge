@@ -20,7 +20,7 @@ public class aopAspect {
     }
 
     @Around("log()")
-    public void Before(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object Before(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed = joinPoint.proceed();
         Object[] args = joinPoint.getArgs();
         String kind = joinPoint.getKind();
@@ -31,6 +31,7 @@ public class aopAspect {
         Object target = joinPoint.getTarget();
         Object aThis = joinPoint.getThis();
         System.out.println("around");
+        return proceed;
 
     }
 
